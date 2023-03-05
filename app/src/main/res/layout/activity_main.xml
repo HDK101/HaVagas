@@ -6,14 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -42,21 +46,29 @@
             android:hint="E-mail"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Receber atualizações"
             />
         <CheckBox
             android:id="@+id/emailUpdatesCheckbox"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Telefone fixo"
             />
+
         <EditText
             android:id="@+id/landlineEdit"
             android:layout_width="match_parent"
@@ -65,33 +77,45 @@
         <RadioGroup
             android:id="@+id/landlineTypeGroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
 
             <RadioButton
+                android:id="@+id/residencialButton"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Residencial" />
 
             <RadioButton
+                android:id="@+id/comercialButton"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Comercial" />
         </RadioGroup>
 
         <CheckBox
+            android:id="@+id/addPhoneCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Adicionar celular" />
+            android:text="Adicionar celular"
+            />
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/phoneLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Celular"
-            />
-        <EditText
-            android:id="@+id/phoneEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Celular"
+                />
+            <EditText
+                android:id="@+id/phoneEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -101,17 +125,21 @@
         <RadioGroup
             android:id="@+id/sexRadioGroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/maleButton"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Masculino" />
 
             <RadioButton
+                android:id="@+id/femaleButton"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Feminino" />
+
         </RadioGroup>
 
         <TextView
@@ -119,8 +147,10 @@
             android:layout_height="wrap_content"
             android:text="Data de nascimento"
             />
+
         <DatePicker
-            android:layout_width="match_parent"
+            android:id="@+id/birthDatePicker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -129,43 +159,49 @@
             android:text="Formação"
             />
         <RadioGroup
-            android:id="@+id/educationLevel"
+            android:id="@+id/educationLevelGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
+                android:id="@+id/fundamentalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Fundamental" />
 
             <RadioButton
+                android:id="@+id/medioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Médio" />
 
             <RadioButton
+                android:id="@+id/graduacaoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Graduação" />
 
             <RadioButton
+                android:id="@+id/especializacaoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Especialização" />
 
             <RadioButton
+                android:id="@+id/mestradoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Mestrado" />
 
             <RadioButton
+                android:id="@+id/doutoradoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Doutorado" />
         </RadioGroup>
 
         <LinearLayout
-            android:id="@+id/anoFormaturaLayout"
+            android:id="@+id/fundamentalMedioLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -177,6 +213,7 @@
                 />
 
             <EditText
+                android:id="@+id/anoFormaturaEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -185,6 +222,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/graducaoEspecializacaoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -196,6 +234,7 @@
                 />
 
             <EditText
+                android:id="@+id/anoConclusao1Edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -209,6 +248,7 @@
                 />
 
             <EditText
+                android:id="@+id/instituicao1Edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -217,6 +257,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/mestradoDoutoradoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -228,6 +269,7 @@
                 />
 
             <EditText
+                android:id="@+id/anoConclusao2Edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -241,6 +283,7 @@
                 />
 
             <EditText
+                android:id="@+id/instituicao2Edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -254,6 +297,7 @@
                 />
 
             <EditText
+                android:id="@+id/monografiaEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
@@ -261,6 +305,7 @@
                 android:inputType="text" />
 
             <TextView
+                android:id="@+id/orientadorEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Orientador"
@@ -281,11 +326,18 @@
             />
 
         <EditText
+            android:id="@+id/vagasDeInteresseEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:hint="Vagas de interesse"
             android:inputType="text" />
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salvar"/>
 
     </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
