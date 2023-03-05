@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">HaVagas</string>
+    <string name="vagas_de_interesse">Vagas de interesse</string>
+    <string name="orientador">Orientador</string>
+    <string name="titulo_da_monografia">Título da monografia</string>
+    <string name="instituicao">Instituição</string>
+    <string name="ano_padrao">2023</string>
+    <string name="ano_de_conclusao">Ano de conclusão</string>
+    <string name="institui_o">Instituição</string>
+    <string name="ano_de_formatura">Ano de formatura</string>
+    <string name="doutorado">Doutorado</string>
+    <string name="mestrado">Mestrado</string>
+    <string name="especializa_o">Especialização</string>
+    <string name="gradua_o">Graduação</string>
+    <string name="m_dio">Médio</string>
+    <string name="fundamental">Fundamental</string>
+    <string name="forma_o">Formação</string>
+    <string name="data_de_nascimento">Data de nascimento</string>
+    <string name="feminino">Feminino</string>
+    <string name="masculino">Masculino</string>
+    <string name="sexo">Sexo</string>
+    <string name="celular">Celular</string>
+    <string name="adicionar_celular">Adicionar celular</string>
+    <string name="comercial">Comercial</string>
+    <string name="residencial">Residencial</string>
+    <string name="telefone_fixo">Telefone fixo</string>
+    <string name="receber_atualiza_es">Receber atualizações</string>
+    <string name="e_mail">E-mail</string>
+    <string name="nome">Nome completo</string>
+    <string name="salvar">Salvar</string>
+    <string name="limpar">Limpar</string>
 </resources>
