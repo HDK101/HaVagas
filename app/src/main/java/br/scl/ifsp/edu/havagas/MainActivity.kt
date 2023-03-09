@@ -8,6 +8,26 @@ import android.widget.Toast
 import br.scl.ifsp.edu.havagas.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        val NOME = "NOME"
+        val EMAIL = "EMAIL"
+        val EMAIL_ATUALIZACOES = "EMAIL_ATUALIZACOES"
+        val TELEFONE = "TELEFONE"
+        val TELEFONE_TIPO = "TELEFONE_TIPO"
+        val ANO_FORMATURA = "ANO_FORMATURA"
+        val MONOGRAFIA = "MONOGRAFIA"
+        val ORIENTADOR = "ORIENTADOR"
+        val CELULAR = "CELULAR"
+        val ADICIONAR_CELULAR = "ADICIONAR_CELULAR"
+        val ANO_CONCLUSAO_1 = "ANO_CONCLUSAO_1"
+        val ANO_CONCLUSAO_2 = "ANO_CONCLUSAO_2"
+        val INSTITUICAO_1 = "INSTITUICAO_1"
+        val INSTITUICAO_2 = "INSTITUICAO_2"
+        val EDUCACAO_NIVEL = "EDUCACAO_NIVEL"
+        val GENERO = "GENERO"
+
+    }
+
     lateinit var activityMainBinding: ActivityMainBinding
 
     private fun genderForm(): Gender {
@@ -73,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.landlineEdit.text.clear()
         activityMainBinding.anoFormaturaEdit.text.clear()
         activityMainBinding.monografiaEdit.text.clear()
-        activityMainBinding.orientadorEdit.text
+        activityMainBinding.orientadorEdit.text.clear()
         activityMainBinding.phoneEdit.text.clear()
         activityMainBinding.anoConclusao1Edit.text.clear()
         activityMainBinding.anoConclusao2Edit.text.clear()
@@ -84,6 +104,25 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.sexRadioGroup.check(R.id.maleButton)
         activityMainBinding.addPhoneCheckbox.isChecked = false
         activityMainBinding.emailUpdatesCheckbox.isChecked = false
+    }
+
+    fun saveState(savedInstanceState: Bundle) {
+        activityMainBinding.fullNameEdit.setText(savedInstanceState.getString(NOME))
+        activityMainBinding.landlineEdit.setText(savedInstanceState.getString(TELEFONE))
+        activityMainBinding.emailEdit.setText(savedInstanceState.getString(EMAIL))
+        activityMainBinding.emailUpdatesCheckbox.isChecked = savedInstanceState.getBoolean(EMAIL_ATUALIZACOES)
+        activityMainBinding.landlineTypeGroup.check(savedInstanceState.getInt(TELEFONE_TIPO, R.id.residencialButton))
+        activityMainBinding.anoFormaturaEdit.setText(savedInstanceState.getString(ANO_FORMATURA))
+        activityMainBinding.monografiaEdit.setText(savedInstanceState.getString(MONOGRAFIA))
+        activityMainBinding.orientadorEdit.setText(savedInstanceState.getString(ORIENTADOR))
+        activityMainBinding.phoneEdit.setText(savedInstanceState.getString(CELULAR))
+        activityMainBinding.addPhoneCheckbox.isChecked = savedInstanceState.getBoolean(ADICIONAR_CELULAR)
+        activityMainBinding.anoConclusao1Edit.setText(savedInstanceState.getString(ANO_CONCLUSAO_1))
+        activityMainBinding.anoConclusao2Edit.setText(savedInstanceState.getString(ANO_CONCLUSAO_2))
+        activityMainBinding.instituicao1Edit.setText(savedInstanceState.getString(INSTITUICAO_1))
+        activityMainBinding.instituicao2Edit.setText(savedInstanceState.getString(INSTITUICAO_2))
+        activityMainBinding.sexRadioGroup.check(savedInstanceState.getInt(GENERO))
+        activityMainBinding.educationLevelGroup.check(savedInstanceState.getInt(EDUCACAO_NIVEL))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -140,5 +179,28 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, formData.toString(), Toast.LENGTH_LONG).show()
             Log.println(Log.DEBUG, "form", formData.toString())
         }
+
+        if (savedInstanceState != null) saveState(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putString(NOME, activityMainBinding.fullNameEdit.text.toString())
+        outState.putString(EMAIL, activityMainBinding.emailEdit.text.toString())
+        outState.putString(TELEFONE, activityMainBinding.landlineEdit.text.toString())
+        outState.putBoolean(EMAIL_ATUALIZACOES, activityMainBinding.emailUpdatesCheckbox.isChecked)
+        outState.putInt(TELEFONE_TIPO, activityMainBinding.landlineTypeGroup.checkedRadioButtonId)
+        outState.putString(ANO_FORMATURA, activityMainBinding.anoFormaturaEdit.text.toString())
+        outState.putString(MONOGRAFIA, activityMainBinding.monografiaEdit.text.toString())
+        outState.putString(ORIENTADOR, activityMainBinding.orientadorEdit.text.toString())
+        outState.putString(CELULAR, activityMainBinding.phoneEdit.text.toString())
+        outState.putBoolean(ADICIONAR_CELULAR, activityMainBinding.addPhoneCheckbox.isChecked)
+        outState.putString(ANO_CONCLUSAO_1, activityMainBinding.anoConclusao1Edit.text.toString())
+        outState.putString(ANO_CONCLUSAO_2, activityMainBinding.anoConclusao2Edit.text.toString())
+        outState.putString(INSTITUICAO_1, activityMainBinding.instituicao1Edit.text.toString())
+        outState.putString(INSTITUICAO_2, activityMainBinding.instituicao2Edit.text.toString())
+        outState.putInt(GENERO, activityMainBinding.sexRadioGroup.checkedRadioButtonId)
+        outState.putInt(EDUCACAO_NIVEL, activityMainBinding.educationLevelGroup.checkedRadioButtonId)
     }
 }
